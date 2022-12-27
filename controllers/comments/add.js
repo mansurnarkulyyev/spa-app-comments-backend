@@ -1,7 +1,8 @@
 const {Comment} = require("../../models/comment");
 
 const add = async(req, res) => {
-    const result = await Comment.create(req.body);
+    const {_id:owner} = req.user;
+    const result = await Comment.create({...req.body, owner});
     res.status(201).json(result)
 }
 
