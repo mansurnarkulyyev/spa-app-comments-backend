@@ -17,6 +17,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
         minlength: 6,
+    },
+    token:{//для логаута
+        type:String,
+        default:""
     }
 }, {versionKey: false, timestamps: true});
 

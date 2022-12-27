@@ -1,20 +1,12 @@
 const {Schema, model} = require("mongoose");
 const Joi = require("joi");
+// const moment = require("moment");
 
 const {handleMongooseSchemaError} = require("../helpers");
 
+// const data = moment().format("DD-MM-YYYY_hh:mm:ss")
+
 // const genres = ["fantastic", "love"];
-// const isbnRegexp = /^\d{3}-\d-\d{3}-\d{5}-\d$/
-
-// Приклад:
-// ISBN 5-02-013850-?
-//   5  0  2  0  1  3  8  5  0  -  цифрова частина
-//  10  9  8  7  6  5  4  3  2  -  вагові коефіцієнти
-//  50  0 16  0  6 15 32 15  0  -  добутки цифр на вагові коефіцієнти
-
-//  50 + 0 + 16 + 0 + 6 + 15 + 32 + 15 + 0 = 134.
-//  Наступне ціле число кратне 11 це 143 = 11*13, тому
-//  143 – 134 = 9               -  контрольна цифра
 
 const commentSchema = new Schema({
      name: {
@@ -43,17 +35,11 @@ const commentSchema = new Schema({
     //     enum: genres,
     //     required: true,
     // },
-    // isbn: {
-    //     type: String,
-    //     match: isbnRegexp,
-    //     required: true,
-    //     unique: true,//если что то отправим уникальное 
-    // },
     // cover: {
     //   type: String,
     //   require: true,
     // },
-}, {versionKey: false, timestamps: true});
+}, {versionKey: false, timestamps: true, });
 
 commentSchema.post("save", handleMongooseSchemaError);
 
