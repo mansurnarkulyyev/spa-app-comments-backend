@@ -8,6 +8,8 @@ const {handleMongooseSchemaError} = require("../helpers");
 
 // const genres = ["fantastic", "love"];
 
+
+
 const commentSchema = new Schema({
      name: {
       type: String,
@@ -35,10 +37,10 @@ const commentSchema = new Schema({
     //     enum: genres,
     //     required: true,
     // },
-    // cover: {
-    //   type: String,
-    //   require: true,
-    // },
+    cover: {
+      type: String,
+      require: true,
+    },
 }, {versionKey: false, timestamps: true, });
 
 commentSchema.post("save", handleMongooseSchemaError);

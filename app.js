@@ -12,7 +12,6 @@ const app = express()
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'
 
 
-// 
 // const bcrypt = require("bcryptjs");
 
 // const hashPassword = async (password) =>{
@@ -26,9 +25,10 @@ const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'
 // hashPassword("ADMINcomments")
 
 
-app.use(logger(formatsLogger))
-app.use(cors())
-app.use(express.json())
+app.use(logger(formatsLogger));
+app.use(cors());
+app.use(express.json());
+app.use(express.static("public"));
 
 app.use("/api/auth", authRouter);
 app.use("/api/captcha", captchaRouter);

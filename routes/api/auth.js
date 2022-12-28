@@ -4,7 +4,7 @@ const ctrl = require("../../controllers/auth");
 
 const {ctrlWrapper} = require("../../helpers");
 
-const {validateBody, authenticate} = require("../../middlewares");
+const {validateBody, authenticate, upload} = require("../../middlewares");
 
 const {schemas} = require("../../models/user");
 
@@ -21,5 +21,8 @@ router.get("/current", authenticate, ctrlWrapper(ctrl.getCurrent));//если п
 
 //logout
 router.get("/logout", authenticate, ctrlWrapper(ctrl.logout));//если пользователь зарегистрирован то можем получать его данные 
+
+//user avatar 
+router.patch("/avatars",authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatar));
 
 module.exports = router;
