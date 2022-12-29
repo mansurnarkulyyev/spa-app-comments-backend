@@ -25,7 +25,7 @@ module.exports = captcha;
 
 
 
-//  function (req, res) {
+// app.get('/captcha', function (req, res) {
 // 	const captcha = svgCaptcha.create();
 //   req.query.captcha = captcha.text;
 //   // console.log(captcha.text);

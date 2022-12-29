@@ -1,10 +1,10 @@
-const {Comment} = require("../../models/comment");
+const {Post} = require("../../models/post");
 
 const {RequestError} = require("../../helpers");
 
 const removeById = async(req, res) => {
     const {id} = req.params;
-    const result = await Comment.findByIdAndRemove(id);
+    const result = await Post.findByIdAndRemove(id);
     if(!result) {
         throw RequestError(404, "Not found");
     }
