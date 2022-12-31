@@ -9,14 +9,16 @@ const {handleMongooseSchemaError} = require("../helpers");
 // const genres = ["fantastic", "love"];
 
 
-
-
 const commentSchema = new Schema({
     user: {
       type: String,
       required: true,
     },
     title: {
+        type: String,
+        required: true,
+    },
+    link: {
         type: String,
         required: true,
     },
@@ -44,7 +46,7 @@ const commentSchema = new Schema({
         type: Array,
         default:0,
     },
-     comments: [
+    comments: [
             {
                 user:{
                     type:Schema.Types.ObjectId,
@@ -65,7 +67,7 @@ const commentSchema = new Schema({
                 },
             }
      ],
-     cover: {
+    cover: {
       type: String,
       required: true,
     },
@@ -83,6 +85,8 @@ const addSchema = Joi.object({
     title: Joi.string().required(),
     author: Joi.string().required(),
     favorite: Joi.boolean(),
+     video:Joi.string(),
+     link:Joi.string(),
     // genre: Joi.string().valueOf(genres).required(),
 });
 

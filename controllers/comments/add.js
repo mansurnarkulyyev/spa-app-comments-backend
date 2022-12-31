@@ -12,6 +12,7 @@ const add = async(req, res) => {
 
     const {_id:owner} = req.user;
     const result = path.join(avatarDir, originalname);
+    
   const cover = path.join(`comments`, originalname);
   await fs.rename(tempUpload, result);
     // const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);

@@ -13,7 +13,7 @@ const captcha = async(req,res)=>{
     }
 
     res.status(200).json({
-       text: captcha.text,
+        text: captcha.text,
         svg: captcha.data,
         message:'verified',
     });

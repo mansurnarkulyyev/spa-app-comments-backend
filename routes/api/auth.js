@@ -4,14 +4,14 @@ const ctrl = require("../../controllers/auth");
 
 const {ctrlWrapper} = require("../../helpers");
 
-const {validateBody, authenticate, upload} = require("../../middlewares");
+const {validateBody, authenticate, upload, authenticateSocial} = require("../../middlewares");
 
 const {schemas} = require("../../models/user");
 
 const router = express.Router();
 
 // signup
-router.post("/register", validateBody(schemas.registerSchema), ctrlWrapper(ctrl.register))
+router.post("/signup", validateBody(schemas.registerSchema), ctrlWrapper(ctrl.register))
 
 // signin
 router.post("/login", validateBody(schemas.loginSchema), ctrlWrapper(ctrl.login));
@@ -24,5 +24,36 @@ router.get("/logout", authenticate, ctrlWrapper(ctrl.logout));//если пол�
 
 //user avatar 
 router.patch("/avatars",authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatar));
+
+
+// router.get(
+//   "/google",
+//   authenticateSocial.authenticate("google", { scope: ["email", "profile"] })
+// );
+
+
+// router.get(
+//   "/google/callback",
+//   authenticateSocial.authenticate("google", {
+//     scope: ["email", "profile"],
+//     session: false,
+//   }),
+//   ctrlWrapper(googleAuth)
+// );
+
+// // 
+// authenticateSocial.serializeUser((user) => {
+//   return done(null, user._id);
+// });
+
+// authenticateSocial.deserializeUser((id) => {
+
+//   User.findById(id, (err) => {
+//     // Whatever we return goes to the client and binds to the req.user property
+//     return done(null, doc);
+//   })
+// })
+
+
 
 module.exports = router;

@@ -4,6 +4,7 @@ const captcha = require("./captcha");
 const getCurrent = require("./getCurrent");
 const logout = require("./logout");
 const updateAvatar = require("./updateAvatar");
+// const googleAuth = require("./googleAuth");
 
 module.exports = {
     register,
@@ -12,4 +13,5 @@ module.exports = {
     getCurrent,
     logout,
     updateAvatar,
+    // googleAuth,
 };

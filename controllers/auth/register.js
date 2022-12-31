@@ -1,7 +1,8 @@
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const gravatar = require("gravatar");
 const {User} = require("../../models/user");
-
+const {SECRET_KEY} = process.env;
 const {RequestError} = require("../../helpers")
 
 const register = async(req,res)=>{
@@ -16,11 +17,23 @@ const register = async(req,res)=>{
 
     const hashPassword = await bcrypt.hash(password, 10);
     const avatarURL = gravatar.url(email);//шаблонный аватар пользователья 
+   
+
     const result = await User.create({name, email, password:hashPassword, avatarURL});
 
+      const payload = {
+        id: result._id,
+    }
+    const token = jwt.sign(payload ,SECRET_KEY,{expiresIn: "1h"});
+
+await User.findByIdAndUpdate(result._id,{token});
+  
     res.status(201).json({
+       user: {
         name:result.name,
         email:result.email,
+    },
+         token,
     });
 };
  
