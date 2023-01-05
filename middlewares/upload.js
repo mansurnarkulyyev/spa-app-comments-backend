@@ -7,7 +7,6 @@ const multerConfig = multer.diskStorage({
     destination: tempDir,
     filename: (_, file, callback) => {
         callback(null, file.originalname)
-        // callback(null, new Date().toISOString() + path.join(__dirname, '/temp/'));
     },
 });
 
@@ -17,3 +16,4 @@ const upload = multer({
 });
 
 module.exports = upload;
+

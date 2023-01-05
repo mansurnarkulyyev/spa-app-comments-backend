@@ -4,13 +4,11 @@ const {RequestError} = require("../../helpers");
 
 const removeById = async(req, res) => {
     const {id} = req.params;
-    const result = await Post.findByIdAndRemove(id);
+    const result = await Post.findByIdAndDelete(id);
     if(!result) {
         throw RequestError(404, "Not found");
     }
-    res.json({
-        message: "Delete success"
-    });
+    res.status(200).json(id);
 };
 
 module.exports = removeById;

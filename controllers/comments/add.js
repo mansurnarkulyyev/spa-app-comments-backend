@@ -5,7 +5,6 @@ const {Post} = require("../../models/post");
 
 const avatarDir = path.join(__dirname, "../../", "public", "comments");
 
-
 const add = async(req, res) => {
   
   const { path: tempUpload, originalname } = req.file;
@@ -15,11 +14,8 @@ const add = async(req, res) => {
     
   const cover = path.join(`comments`, originalname);
   await fs.rename(tempUpload, result);
-    // const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    const response = await Post.create({...req.body, owner,cover });
+    const response = await Post.create({...req.body, owner, cover });
     res.status(201).json(response)
 }
 
 module.exports = add;
-
-

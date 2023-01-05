@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const authRouter = require("./routes/api/auth");
 const captchaRouter = require("./routes/api/captcha");
-const commentsRouter = require("./routes/api/comments");
+const postsRouter = require("./routes/api/posts");
 
 const app = express()
 
@@ -33,7 +33,7 @@ app.use(express.static("public"));
 
 app.use("/api/users", authRouter);
 app.use("/api/captcha", captchaRouter);
-app.use('/api/comments', commentsRouter);
+app.use('/api/posts', postsRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'Not found' })
