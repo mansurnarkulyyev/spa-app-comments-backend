@@ -2,8 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const gravatar = require("gravatar");
 const {User} = require("../../models/user");
-// const {SECRET_KEY} = process.env;
-const SECRET_KEY = "1234asdfg"
+const {SECRET_KEY} = process.env;
 const {RequestError} = require("../../helpers")
 
 const register = async(req,res)=>{
