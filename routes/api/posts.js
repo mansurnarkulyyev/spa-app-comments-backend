@@ -20,7 +20,7 @@ router.get("/", authenticate, ctrlWrapper(ctrl.getAll));
 router.get("/:id",authenticate, isValidId, ctrlWrapper(ctrl.getById));
 
 //update post
-router.put("/:id",authenticate, isValidId, validateBody(schemas.addSchema), ctrlWrapper(ctrl.updateById));
+router.patch("/:id", authenticate, isValidId, validateBody(schemas.addSchema), ctrlWrapper(ctrl.updateById));
 
 //like
 router.put("/:id/like",authenticate, isValidId, validateBody(schemas.addSchema), ctrlWrapper(ctrl.updateLike));

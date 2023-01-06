@@ -23,7 +23,7 @@ router.get("/current", authenticate, ctrlWrapper(ctrl.getCurrent));//если п
 router.get("/logout", authenticate, ctrlWrapper(ctrl.logout));//если пользователь зарегистрирован то можем получать его данные 
 
 //user avatar 
-// router.patch("/avatars",authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatar));
+router.patch("/avatars",authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatar));
 
 
 // router.get(

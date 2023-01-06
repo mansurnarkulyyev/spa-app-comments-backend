@@ -11,7 +11,7 @@ const captcha = async(req,res)=>{
     if(!captcha){
         throw RequestError(404, "Not Verified!")
     }
-
+    
     res.status(200).json({
         text: captcha.text,
         svg: captcha.data,

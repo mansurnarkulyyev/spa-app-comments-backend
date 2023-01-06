@@ -7,20 +7,27 @@ const commentSchema = new Schema(
   {
     user: {
       type: String,
-      //   required: true,
+        required: true,
     },
     text: {
       type: String,
       required: true,
     },
-   
+    tags: {
+      type: Array,
+      default: [],
+    },
+    viewsCount: {
+      type: Number,
+      default: 0,
+    },
     owner: {
       //владелец комментарии который он добавил (автор)
       type: Schema.Types.ObjectId,
       ref: "user",
       required: true,
     },
-   
+
     comments: [
       {
         user: {
@@ -28,7 +35,7 @@ const commentSchema = new Schema(
           ref: "user",
           required: true,
         },
-       
+
         // userName: {
         //     type: String,
         //     required: true,
@@ -53,7 +60,6 @@ const commentSchema = new Schema(
     //     type: String,
     //     enum: genres,
     // },
-   
   },
   { versionKey: false, timestamps: true }
 );
@@ -61,8 +67,8 @@ const commentSchema = new Schema(
 commentSchema.post("save", handleMongooseSchemaError);
 
 const addSchema = Joi.object({
-  // user: Joi.string().required(),
-  user: Joi.string(),
+  user: Joi.string().required(),
+  tags: Joi.array(),
   text: Joi.string().required(),
   //  name: Joi.string().required(),
 });

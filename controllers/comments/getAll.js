@@ -2,7 +2,7 @@ const {Post} = require("../../models/post");
 
 
 const getAll=async(_,res) =>{
-    const result = await Post.find();
+    const result = await Post.find().populate('owner',"-password -createdAt -updatedAt").exec();
     res.json(result);
 }
 
